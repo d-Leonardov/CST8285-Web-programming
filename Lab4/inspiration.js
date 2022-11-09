@@ -198,12 +198,10 @@ const inspirations = [
 
 // Your code goes here.  
    
-var random = Math.floor(Math.random()*95);
-document.getElementById("quote-text").innerHTML = inspirations[random].quote;
-document.getElementById("author").innerHTML = inspirations[random].author;
-
 function getInspirationQuote() {
-       var random = Math.floor(Math.random()*95);
+       var random = Math.floor(Math.random()*inspirations.length);
        document.getElementById("quote-text").innerHTML = inspirations[random].quote;
        document.getElementById("author").innerHTML = inspirations[random].author;
 }
+
+getInspirationQuote();

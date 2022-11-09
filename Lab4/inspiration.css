@@ -1,0 +1,52 @@
+body {
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: rgba(211, 200, 200, 0.815);
+}
+
+header {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-decoration: underline;
+    margin: 1%;
+}
+
+#quote {
+    border:15pt solid black;
+    border-radius: 8px;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+#quote-text {
+    padding: 10px;
+    background-color:darkslategray; 
+    color:ivory;
+    font-family: cursive;
+    font-size: larger;
+    text-align: center;
+}
+
+#author {
+    padding: 10px;
+    background-color: darkslategray;
+    color: aqua;
+    font-size: large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: italic;
+    text-align: right;
+}
+
+button {
+    font-family: sans-serif;
+    margin: 0 45%;
+    border-radius: 8px;
+    padding: 5px;
+    font-size: 12pt;
+}
+
+button:hover {
+    color: rgb(255, 0, 76);
+    font-weight: bold;
+}
+
+

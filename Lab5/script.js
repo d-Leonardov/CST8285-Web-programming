@@ -17,24 +17,23 @@ function newsletterCheck() {
 }
 
 function validate() {
-
-var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-var emailValue = document.querySelector("#email").value;
-var isEmailValid = emailPattern.test(emailValue);
-var loginPattern = /^[a-zA-Z]{1,20}$/
-var loginValue = document.forms[0].login.value;
-var IsLoginValid = loginPattern.test(loginValue);
-var passwordPattern = /^(?=.{6,}$)(?=.*[a-z])(?=.*[A-Z])/
-var passwordValue = document.querySelector("#pass").value;
-var isPasswordValid = passwordPattern.test(document.forms[0].pass.value);
-var passwordValue2 = document.querySelector("#pass2").value;
-var newsletter = document.querySelector("#newsletter")
-var terms = document.querySelector("#terms");
+    var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var emailValue = document.querySelector("#email").value;
+    var isEmailValid = emailPattern.test(emailValue);
+    var loginPattern = /^[a-zA-Z]{1,20}$/
+    var loginValue = document.forms[0].login.value;
+    var IsLoginValid = loginPattern.test(loginValue);
+    var passwordPattern = /^(?=.{6,}$)(?=.*[a-z])(?=.*[A-Z])/
+    var passwordValue = document.querySelector("#pass").value;
+    var isPasswordValid = passwordPattern.test(document.forms[0].pass.value);
+    var passwordValue2 = document.querySelector("#pass2").value;
+    var newsletter = document.querySelector("#newsletter")
+    var terms = document.querySelector("#terms");
+    
 
     if(!isEmailValid) {
         errorAction("email", 0);
         document.getElementById("email").focus();
-        
     } 
 
     if(!IsLoginValid) {
@@ -45,7 +44,6 @@ var terms = document.querySelector("#terms");
     if(!isPasswordValid) {
         errorAction("pass", 2);
         document.getElementById("pass").focus();
-        
     }
     
     if((passwordValue2 != passwordValue) || (passwordValue2 == "")) {
@@ -59,7 +57,8 @@ var terms = document.querySelector("#terms");
 
     if ((isEmailValid == true) && (IsLoginValid == true) && (isPasswordValid == true) && 
     (passwordValue2 == passwordValue) && terms.checked == true) {
-        document.getElementById("login").innerText.toLowerCase;
+        window.confirm(`User "${loginValue.toLowerCase()}" has subscribed succesfully`);
+        document.getElementsByTagName("form").submit();
         return true;
     }
 
@@ -67,7 +66,6 @@ var terms = document.querySelector("#terms");
 }
 
 function errorAction(inputId, listError) {
-    
     var errorElem = document.createElement('p')
     errorElem.textContent = errlistMsg[listError];
     errorElem.style = "color:red";
@@ -75,7 +73,9 @@ function errorAction(inputId, listError) {
     document.getElementById(inputId).after(errorElem);
 }
 
+
 var errlistMsg = ["❌ Email address should be non-empty with the format xyx@xyz.xyz", 
 "❌ User name should be non-empty , and within 20 characters long."
 ,"❌ Password should be at least 6 characters: 1 uppercase, 1 lowercase.", 
 "❌ Please retype password.", "❌ Please accept terms and conditions"]
+

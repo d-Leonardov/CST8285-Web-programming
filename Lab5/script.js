@@ -9,127 +9,73 @@ var isPasswordValid = passwordPattern.test(passwordValue);
 var passwordValue2 = document.getElementById("pass2").value;
  */
 
-var emailPattern2 = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-var emailValue2 = document.forms[0].email.value;
-var isEmailValid2 = emailPattern2.test(emailValue2);
-var loginValue2 = document.forms[0].login.value;
-var passwordPattern2 = /^(?=.{6,}$)(?=.*[a-z])(?=.*[A-Z])/
-var passwordValue2 = document.forms[0].pass.value;
-var isPasswordValid2 = passwordPattern2.test(passwordValue2);
-var passwordValue3 = document.getElementById("pass2").value;
-
-
-
-/**
-function validate() {
-  
-    if(document.getElementById("email").value.sear== emailPattern ) {
-        //alert (isEmailValid);
-        alert (document.getElementById("email").value);
-        validation("email", 0);
-        document.getElementById("email").focus();
-        return false;
-    } 
-    
-    if(document.getElementById("login").innerHTML.length > 2) {
-        validation("login", 1);
-        document.getElementById("login").focus();
-        
-    } 
-
-    if(!isPasswordValid2) {
-        validation("pass", 2);
-        document.getElementById("pass").focus();
-        
+function newsletterCheck() {
+    var newsletter = document.querySelector("#newsletter") ;
+    if (newsletter.checked == true) {
+        window.confirm("Accepting newsletter might draw span");
     }
-    
-    if (passwordValue3 != passwordValue2) {
-        validation("pass2", 2);
-        document.getElementById("pass2").focus();
-    }
-
-    //return false;
-
-    else {
-        return false;
-    }
-    
 }
- */
 
-function validate2() {
-    
-    alert (isEmailValid2);
-    alert (isPasswordValid2);
-    
-    if(!isEmailValid2) {
-        validation("email", 0);
+function validate() {
+
+var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+var emailValue = document.querySelector("#email").value;
+var isEmailValid = emailPattern.test(emailValue);
+var loginPattern = /^[a-zA-Z]{1,20}$/
+var loginValue = document.forms[0].login.value;
+var IsLoginValid = loginPattern.test(loginValue);
+var passwordPattern = /^(?=.{6,}$)(?=.*[a-z])(?=.*[A-Z])/
+var passwordValue = document.querySelector("#pass").value;
+var isPasswordValid = passwordPattern.test(document.forms[0].pass.value);
+var passwordValue2 = document.querySelector("#pass2").value;
+var newsletter = document.querySelector("#newsletter")
+var terms = document.querySelector("#terms");
+
+    if(!isEmailValid) {
+        errorAction("email", 0);
         document.getElementById("email").focus();
-               
-    } 
-    
-    if((document.forms[0].login.value.length > 20) || (document.forms[0].login.value == "")) {
-        validation("login", 1);
-        document.getElementById("login").focus();
+        
     } 
 
-    if(!isPasswordValid2) {
-        validation("pass", 2);
+    if(!IsLoginValid) {
+        errorAction("login", 1);
+        document.getElementById("login").focus();
+    }
+
+    if(!isPasswordValid) {
+        errorAction("pass", 2);
         document.getElementById("pass").focus();
         
     }
     
-    if (passwordValue3 == passwordValue2) {
-        validation("pass2", 2);
+    if((passwordValue2 != passwordValue) || (passwordValue2 == "")) {
+        errorAction("pass2", 3);
         document.getElementById("pass2").focus();
-        return false;
     }
 
-    //return false;
+    if(terms.checked == false) {
+        errorAction("terms", 4)
+    }
 
-    else {
+    if ((isEmailValid == true) && (IsLoginValid == true) && (isPasswordValid == true) && 
+    (passwordValue2 == passwordValue) && terms.checked == true) {
+        document.getElementById("login").innerText.toLowerCase;
         return true;
     }
+
+    return false;
 }
 
-function validation(inputId, listError) {
-     var errorElem = document.createElement('p')
-     errorElem.textContent = errlistMsg[listError];
-     errorElem.style = "color:red";
-     document.getElementById(inputId).style = "border-color:red";
-     document.getElementById(inputId).after(errorElem);
-}
-
-/**
-function validation2(_inputName, listError) {
+function errorAction(inputId, listError) {
+    
     var errorElem = document.createElement('p')
     errorElem.textContent = errlistMsg[listError];
     errorElem.style = "color:red";
-    document.forms[0].inputName.style = "border-color:red";
-    document.forms[0].inputName.style.after(errorElem);
-}
- */
-
-/**
- * test function
-
-function testValidate() {
-    //test("email", 0);
-    alert (document.getElementById("email").value);
-    
+    document.getElementById(inputId).style = "border-color:red";
+    document.getElementById(inputId).after(errorElem);
 }
 
-function test(x,listError ) {
-    var errorElem = document.createElement('p')
-    errorElem.textContent = errlistMsg[listError];
-    alert (errorElem.value);
-    errorElem.style = "color:red";
-    document.getElementById(x).style = "border-color:red";
-    document.getElementById(x).after(errorElem);
-    
-}
-**/
-
-var errlistMsg = ["X Email address should be non-empty with the format xyx@xyz.xyz", "X User name should be non-empty , and within 20 characters long."
-,"X Password should be at least 6 characters: 1 uppercase, 1 lowercase.", "X Password should be at least 6 characters: 1 uppercase, 1 lowercase.",
-"X Please retype password." ]
+var errlistMsg = ["❌ Email address should be non-empty with the format xyx@xyz.xyz", 
+"❌ User name should be non-empty , and within 20 characters long."
+,"❌ Password should be at least 6 characters: 1 uppercase, 1 lowercase.", 
+"❌ Please retype password.", "❌ Please accept terms and conditions"]

@@ -10,9 +10,9 @@
 </head>
 <body>
     <div class="formcontainer">
-        <h1>Weekly Kitten Pictures Subsription</h1>
+        <h1>Weekly Kitten Pictures Subscription</h1>
         <hr>
-        <form action="registration.html" method="get" onsubmit="return validate2();">
+        <form action="registration.html" method="get" onsubmit="return validate();">
             <!-- You will need to write the validate function for this form. -->
 
             <div class="textfield">
@@ -36,7 +36,7 @@
             </div>
 
             <div class="checkbox">
-                <input type="checkbox" name="newsletter" id="newsletter">
+                <input type="checkbox" name="newsletter" id="newsletter" onclick="newsletterCheck()">
                 <label for="newsletter">I agree to receive Weekly Kitten Pictures newsletters</label>
             </div>
 

@@ -5,7 +5,6 @@ var errorPass2 = document.createElement('p');
 var errorCheck = document.createElement('p');
 
 function validate() {
-
     var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     var emailValue = document.querySelector("#email").value;
     var isEmailValid = emailPattern.test(emailValue);
@@ -19,7 +18,6 @@ function validate() {
     var newsletter = document.querySelector("#newsletter")
     var terms = document.querySelector("#terms");
     
-
     if(!isEmailValid) {
         errorAction("email", 0, errorMail);
         document.getElementById("email").blur();

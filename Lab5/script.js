@@ -5,6 +5,7 @@ var errorPass2 = document.createElement('p');
 var errorCheck = document.createElement('p');
 
 function validate() {
+    
     var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     var emailValue = document.querySelector("#email").value;
     var isEmailValid = emailPattern.test(emailValue);
@@ -15,9 +16,8 @@ function validate() {
     var passwordValue = document.querySelector("#pass").value;
     var isPasswordValid = passwordPattern.test(document.forms[0].pass.value);
     var passwordValue2 = document.querySelector("#pass2").value;
-    var newsletter = document.querySelector("#newsletter")
     var terms = document.querySelector("#terms");
-    
+
     if(!isEmailValid) {
         errorAction("email", 0, errorMail);
         document.getElementById("email").blur();
@@ -29,6 +29,7 @@ function validate() {
         errorAction("login", 1, errorLogin);
         document.getElementById("login").blur();
     } else if(IsLoginValid) {
+        document.forms[0].login.value.toLowerCase();
         correctValue("login", errorLogin);
     }
 
@@ -58,16 +59,15 @@ function validate() {
         document.getElementsByTagName("form").submit();
         return true;
     }
-
     return false;
 }
 
-function newsletterCheck() {
-    var newsletter = document.querySelector("#newsletter") ;
-    if (newsletter.checked == true) {
-        window.confirm("Accepting newsletter might draw tons of span");
+var news = document.getElementById("newsletter");
+news.addEventListener("click", function() {
+    if (news.checked == true) {
+    window.confirm("Accepting newsletter might draw tons of span");
     }
-}
+})
 
 function errorAction(inputId, listError, errorName) {
     errorName.textContent = errlistMsg[listError];
@@ -80,6 +80,11 @@ function correctValue(inputId, errorName) {
     document.getElementById(inputId).style = "border-color:black";
     errorName.remove();
 }
+
+var lowerCaseLogin = document.querySelector("button");
+lowerCaseLogin.addEventListener("click", function(){
+    document.getElementById("login").value = document.getElementById("login").value.toLowerCase();
+})
 
 var errlistMsg = ["❌ Email address should be non-empty with the format xyx@xyz.xyz", 
 "❌ User name should be non-empty , and within 20 characters long."
